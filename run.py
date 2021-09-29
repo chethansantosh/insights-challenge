@@ -14,13 +14,14 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser()
         parser.add_argument('-p', '--path', type=str, help="Absolute directory path containing Camera image files",
                             required=True)
-        operation_help = "Operation to perform" \
+        operation_help = "Operation to perform - Choices 1 or 2 " \
                          " 1.Return Date Range of image files present in the path" \
                          " 2.Return List of Dict with files by timezone-aware date"
         parser.add_argument('-o', '--operation', type=int, help=operation_help, required=True)
-        parser.add_argument('-t', '--timeZone', type=str, help="Timezone to list the files",
+        parser.add_argument('-t', '--timeZone', type=str, help="Timezone to list the files.",
                             required=False)
-        parser.add_argument('-l', '--logFilePath', type=str, help="File path to Log the information",
+        parser.add_argument('-l', '--logFilePath', type=str, help="File path to Log the information. "
+                                                                  "Default it logs in current working directory",
                             required=False)
         args = parser.parse_args()
 
@@ -49,7 +50,7 @@ if __name__ == "__main__":
             logging.info("File names in the path {0} are of date range - ".format(args.path))
             logging.info(process_image_files.get_date_range_of_image_files())
         elif str(args.operation) == "2":
-            logging.info("List of Dictionaries with files by timezone-aware date")
+            logging.info("List of Dictionaries with files by timezone {0} aware date".format(args.timeZone))
             file_dict_list = process_image_files.list_files_by_time_zone_date(args.timeZone)
             logging.info(json.dumps(file_dict_list, indent=4, sort_keys=True))
         sys.exit(0)
