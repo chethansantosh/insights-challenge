@@ -54,7 +54,6 @@ class TestProcessImageFilesByDate(TestCase):
                            {'date_tz': '2020-11-02',
                             'files': ['parent/child1/farm-xxx_barn-3_camera-1_2020-11-02T00h00m00s+0000.png']}]
         actual_output = process_image_files.list_files_by_time_zone_date("Pacific/Enderbury")
-        print(actual_output)
         if len(expected_output) != len(actual_output) or any(item not in actual_output for item in expected_output):
             flag = False
         assert flag is True
