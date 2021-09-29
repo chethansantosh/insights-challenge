@@ -113,3 +113,12 @@ python run.py -p 'parent' -o 2 -t 'Pacific/Enderbury'
 ]
 
 ```
+### Unit Tests 
+
+```python test_process_image_files.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.037s
+
+OK
+```
